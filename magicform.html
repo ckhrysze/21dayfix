@@ -1,0 +1,53 @@
+<head>
+  <title>magicform</title>
+</head>
+
+<body>
+  {{> magicform }}
+</body>
+
+<template name="magicform">
+  {{#each days}}
+  <table id="day_{{this._id}}" class="daytable">
+    <tr>
+      <td class="daycell yellow left">DAY: {{this._id}}</td>
+      <td class="dayHeader"><div class="green box">&nbsp;</div></td>
+      <td class="dayHeader"><div class="purple box">&nbsp;</div></td>
+      <td class="dayHeader"><div class="red box">&nbsp;</div></td>
+      <td class="dayHeader"><div class="yellow box">&nbsp;</div></td>
+      <td class="dayHeader"><div class="blue box">&nbsp;</div></td>
+      <td class="dayHeader"><div class="orange box">&nbsp;</div></td>
+      <td class="dayHeader"><img src="spoon.png" /></td>
+    </tr>
+    {{#each this.meals}}
+    <tr>
+      <td class="left">Meal {{this.index}}</td>
+      <td><input id="{{../_id}}_{{this.index}}_green" type="text" class="numInput"
+                 value="{{this.green}}" /></td>
+      <td><input id="{{../_id}}_{{this.index}}_purple" type="text" class="numInput"
+                 value="{{this.purple}}" /></td>
+      <td><input id="{{../_id}}_{{this.index}}_red" type="text" class="numInput"
+                 value="{{this.red}}" /></td>
+      <td><input id="{{../_id}}_{{this.index}}_yellow" type="text" class="numInput"
+                 value="{{this.yellow}}" /></td>
+      <td><input id="{{../_id}}_{{this.index}}_blue" type="text" class="numInput"
+                 value="{{this.blue}}" /></td>
+      <td><input id="{{../_id}}_{{this.index}}_orange" type="text" class="numInput"
+                 value="{{this.orange}}" /></td>
+      <td><input id="{{../_id}}_{{this.index}}_spoon" type="text" class="numInput"
+                 value="{{this.spoon}}" /></td>
+    </tr>
+    {{/each}}
+    <tr>
+      <td class="left">Total</td>
+      <td id="{{_id}}_green_total" class="total">{{this.green}}</td>
+      <td id="{{_id}}_purple_total" class="total">{{this.purple}}</td>
+      <td id="{{_id}}_red_total" class="total">{{this.red}}</td>
+      <td id="{{_id}}_yellow_total" class="total">{{this.yellow}}</td>
+      <td id="{{_id}}_blue_total" class="total">{{this.blue}}</td>
+      <td id="{{_id}}_orange_total" class="total">{{this.orange}}</td>
+      <td id="{{_id}}_spoon_total" class="total">{{this.spoon}}</td>
+    </tr>
+  </table>
+  {{/each}}
+</template>
