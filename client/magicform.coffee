@@ -6,9 +6,16 @@ Template.magicform.days = () ->
   magicform = MagicForms.findOne({_id: formId})
 
   if magicform?
-    days = _.map(magicform.days, (id) ->
-      Day.findOne({_id: id})
-    )
+    [ignore, dayId] = window.location.pathname.split('/');
+
+    days = [[]]
+    if dayId? and !isNaN(parseInt(dayId))
+      days = Day.find({_id: dayId})
+    else
+      days = _.map(magicform.days, (id) ->
+        Day.findOne({_id: id})
+      )
+
     return days
   else
     return [[]]
@@ -20,7 +27,13 @@ Template.magicform.events = {
       (error, result) ->
         console.log("Returned from update: " + (Date.now() - start))
     )
-    console.log(Date.now() - start)
+  ,
+  "change .waterCheck": (evt) ->
+    start = Date.now()
+    response = Meteor.call('updateWater', evt.srcElement.id, evt.srcElement.checked,
+      (error, result) ->
+        console.log("Returned from update water: " + (Date.now() - start))
+    )
 }
 
 Meteor.startup () ->

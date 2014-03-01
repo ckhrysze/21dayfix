@@ -21,24 +21,24 @@
     </tr>
     {{#each this.meals}}
     <tr>
-      <td class="left">Meal {{this.index}}</td>
-      <td><input id="{{../_id}}_{{this.index}}_green" type="text" class="numInput"
+      <td class="left mealHeader">Meal {{this.index}}</td>
+      <td class="mealCell"><input id="{{../_id}}_{{this.index}}_green" type="text" class="numInput"
                  value="{{this.green}}" /></td>
-      <td><input id="{{../_id}}_{{this.index}}_purple" type="text" class="numInput"
+      <td class="mealCell"><input id="{{../_id}}_{{this.index}}_purple" type="text" class="numInput"
                  value="{{this.purple}}" /></td>
-      <td><input id="{{../_id}}_{{this.index}}_red" type="text" class="numInput"
+      <td class="mealCell"><input id="{{../_id}}_{{this.index}}_red" type="text" class="numInput"
                  value="{{this.red}}" /></td>
-      <td><input id="{{../_id}}_{{this.index}}_yellow" type="text" class="numInput"
+      <td class="mealCell"><input id="{{../_id}}_{{this.index}}_yellow" type="text" class="numInput"
                  value="{{this.yellow}}" /></td>
-      <td><input id="{{../_id}}_{{this.index}}_blue" type="text" class="numInput"
+      <td class="mealCell"><input id="{{../_id}}_{{this.index}}_blue" type="text" class="numInput"
                  value="{{this.blue}}" /></td>
-      <td><input id="{{../_id}}_{{this.index}}_orange" type="text" class="numInput"
+      <td class="mealCell"><input id="{{../_id}}_{{this.index}}_orange" type="text" class="numInput"
                  value="{{this.orange}}" /></td>
-      <td><input id="{{../_id}}_{{this.index}}_spoon" type="text" class="numInput"
+      <td class="mealCell"><input id="{{../_id}}_{{this.index}}_spoon" type="text" class="numInput"
                  value="{{this.spoon}}" /></td>
     </tr>
     {{/each}}
-    <tr>
+    <tr class="totalRow">
       <td class="left">Total</td>
       <td id="{{_id}}_green_total" class="total">{{this.green}}</td>
       <td id="{{_id}}_purple_total" class="total">{{this.purple}}</td>
@@ -47,6 +47,22 @@
       <td id="{{_id}}_blue_total" class="total">{{this.blue}}</td>
       <td id="{{_id}}_orange_total" class="total">{{this.orange}}</td>
       <td id="{{_id}}_spoon_total" class="total">{{this.spoon}}</td>
+    </tr>
+  </table>
+  <table class="waterTable">
+    <tr>
+      <td class="waterHeader">Water</td>
+      {{#each this.water }}
+      <td class="waterCell">
+        <input id="{{../_id}}_{{this.name}}"
+               name="{{this.name}}"
+               {{#if this.checked}}
+               checked="checked"
+               {{/if}}
+               class="waterCheck"
+               type="checkbox" />
+      </td>
+      {{/each}}
     </tr>
   </table>
   {{/each}}
